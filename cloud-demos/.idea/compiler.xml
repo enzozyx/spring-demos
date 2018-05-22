@@ -25,6 +25,7 @@
         <module name="commons" />
         <module name="register" />
         <module name="server-bpm" />
+        <module name="server-project" />
         <module name="server-user" />
       </profile>
     </annotationProcessing>
@@ -32,6 +33,7 @@
       <module name="commons" target="1.8" />
       <module name="register" target="1.8" />
       <module name="server-bpm" target="1.8" />
+      <module name="server-project" target="1.8" />
       <module name="server-user" target="1.8" />
     </bytecodeTargetLevel>
   </component>

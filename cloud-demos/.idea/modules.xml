@@ -6,6 +6,7 @@
       <module fileurl="file://$PROJECT_DIR$/commons/commons.iml" filepath="$PROJECT_DIR$/commons/commons.iml" />
       <module fileurl="file://$PROJECT_DIR$/register/register.iml" filepath="$PROJECT_DIR$/register/register.iml" />
       <module fileurl="file://$PROJECT_DIR$/server-bpm/server-bpm.iml" filepath="$PROJECT_DIR$/server-bpm/server-bpm.iml" />
+      <module fileurl="file://$PROJECT_DIR$/server-project/server-project.iml" filepath="$PROJECT_DIR$/server-project/server-project.iml" />
       <module fileurl="file://$PROJECT_DIR$/server-user/server-user.iml" filepath="$PROJECT_DIR$/server-user/server-user.iml" />
     </modules>
   </component>
