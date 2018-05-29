@@ -6,7 +6,7 @@ server:
   port: 8101
 spring:
   application:
-    name: service-user
+    name: server-user
   datasource:
     druid:
       #druid 访问控制

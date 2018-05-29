@@ -1,0 +1,23 @@
+server:
+  port: 8105
+eureka:
+  client:
+    service-url:
+      defaultZone: http://192.168.97.30:8100/eureka
+spring:
+  application:
+    name: server-gateway
+zuul:
+  routes:
+    user:
+      path: /api-user/**
+      serviceId: server-user
+    project:
+      path: /api-project/**
+      serviceId: server-project
+    bpm:
+      path: /api-bpm/**
+      serviceId: server-bpm
+    notes:
+      path: /api-notes/**
+      serviceId: server-notes

@@ -3,6 +3,7 @@ package com.enzo.demo.project.service.providers;/**
  */
 
 import com.enzo.demo.entity.sys.User;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -18,7 +19,12 @@ public class UserService {
     @Autowired
     private RestTemplate restTemplate;
 
+    @HystrixCommand(fallbackMethod = "queryUserError")
     public User queryUserByName(String name){
-        return restTemplate.getForObject("http://SERVICE-USER/user/" + name , User.class);
+        return restTemplate.getForObject("http://SERVER-USER/user/" + name , User.class);
+    }
+
+    public User queryUserError(String name){
+        return null;
     }
 }

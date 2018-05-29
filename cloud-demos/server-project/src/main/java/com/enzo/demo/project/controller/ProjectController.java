@@ -2,6 +2,7 @@ package com.enzo.demo.project.controller;/**
  * Created by LENOVO on 2018/5/22.
  */
 
+import com.enzo.demo.entity.sys.User;
 import com.enzo.demo.project.service.IProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,7 +21,7 @@ public class ProjectController {
     private IProjectService service;
 
     @RequestMapping(value = "project/{name}", method = RequestMethod.GET)
-    public String test(@PathVariable String name){
-        return this.service.test(name).toString();
+    public User test(@PathVariable String name){
+        return this.service.test(name);
     }
 }

@@ -22,17 +22,23 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
+        <module name="code-plugin" />
         <module name="commons" />
         <module name="register" />
         <module name="server-bpm" />
+        <module name="server-gateway" />
+        <module name="server-notes" />
         <module name="server-project" />
         <module name="server-user" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="code-plugin" target="1.8" />
       <module name="commons" target="1.8" />
       <module name="register" target="1.8" />
       <module name="server-bpm" target="1.8" />
+      <module name="server-gateway" target="1.8" />
+      <module name="server-notes" target="1.8" />
       <module name="server-project" target="1.8" />
       <module name="server-user" target="1.8" />
     </bytecodeTargetLevel>

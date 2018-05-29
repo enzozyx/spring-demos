@@ -1,0 +1,33 @@
+#*
+* Dao 层模板
+* *#
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+## mapper 配置 需要参数基础包名与domin名称: {package:, domian: }
+<mapper namespace="${packageName}.${domian}Dao}">
+
+## 查询用的Map  需要参数: domain-实体名称
+    <resultMap id="${domian}Map" type="${packageName}.entity.${domian}">
+        #foreach($item in $fields)
+            <result column="$item.alias" property="$item.domian" jdbcType="$item.jdbcType"/>
+        #end
+    </resultMap>
+
+    <sql id="${domain}Field" >
+        <trim suffixoverride=",">
+        #foreach($item in $fields)
+            $item.alias ,
+        #end
+        </trim>
+    </sql>
+
+    <select id="findList" parameterType="${packageName}.${domain}" resultMap="${domian}Map">
+
+    </select>
+
+    <select id="findCount" parameterType="${packageName}.${domain}" resultType="java.lang.Integer">
+
+    </select>
+
+
+</mapper>

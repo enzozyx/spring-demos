@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.enzo.demo.code.dao.RelationDao">
+
+    <resultMap id="RelationMap" type="com.enzo.demo.code.entity.Relation">
+        <result column="schemaname" property="schema" jdbcType="VARCHAR"/>
+        <result column="tablename" property="name" jdbcType="VARCHAR"/>
+        <result column="tablespace" property="space" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="RelationField">
+        schemaname, tablename, tablespace
+    </sql>
+
+    <select id="selectSchemaRelations" parameterType="java.lang.String" resultMap="RelationMap">
+        SELECT <include refid="RelationField"/> FROM pg_tables WHERE schemaname = #{schema}
+    </select>
+
+    <resultMap id="RelationFieldMap" type="com.enzo.demo.code.entity.RelationField">
+        <result column="attnum" property="order" jdbcType="SMALLINT"/>
+        <result column="field" property="name" jdbcType="VARCHAR"/>
+        <result column="type" property="jdbcType" jdbcType="VARCHAR"/>
+        <result column="length" property="length" jdbcType="INTEGER"/>
+        <result column="lengthvar" property="varLength" jdbcType="INTEGER"/>
+        <result column="notnull" property="notNull" jdbcType="BOOLEAN"/>
+        <result column="comment" property="comment" jdbcType="VARCHAR"/>
+    </resultMap>
+    <select id="selectRelationFields" resultMap="RelationFieldMap">
+        SELECT
+        a.attnum,
+        a.attname AS field,
+        t.typname AS type,
+        a.attlen AS length,
+        a.atttypmod AS lengthvar,
+        a.attnotnull AS notnull,
+        b.description AS comment,
+        s.schemaname as schemaname,
+        s.tablename as tablename,
+        s.tablespace as tablespace
+        FROM pg_class c
+        LEFT JOIN pg_tables s on s.tablename = c.relname,
+        pg_attribute a
+        LEFT OUTER JOIN pg_description b ON a.attrelid=b.objoid AND a.attnum = b.objsubid,
+        pg_type t
+        WHERE s.schemaname = #{schema}
+        and c.relname = #{name}
+        and a.attnum > 0
+        and a.attrelid = c.oid
+        and a.atttypid = t.oid
+        ORDER BY a.attnum;
+    </select>
+
+</mapper>

@@ -3,6 +3,7 @@ package com.enzo.demo.entity.sys;/**
  */
 
 import com.enzo.demo.entity.base.BaseBean;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
@@ -10,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @desccription 用户模块
  * @date 2018-05-2018/5/22-11:35
  */
+@JsonIgnoreProperties({"del_flag", "created", "create_by", "updated", "update_by"})
 public class User<P extends Integer> extends BaseBean<P>{
 
     @JsonProperty("username")

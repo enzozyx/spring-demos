@@ -1,0 +1,24 @@
+server:
+  port: 8106
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8100/eureka/
+spring:
+  application:
+    name: plugin-code
+  datasource:
+      druid:
+        stat-view-servlet:
+           enabled: true
+           resetEnable: false
+           loginUsername: admin
+           loginPassword: 123456
+           allow: 127.0.0.1
+      name: bim_bus
+      username: postgres
+      password: HUAJIEbim@123456
+      driver-class-name: org.postgresql.Driver
+      url: jdbc:postgresql://192.168.1.234:5432/bim_inner?useunicode=true&characterencoding=utf-8&zerodatetimebehavior=converttonull
+mybatis:
+  mapper-locations: mapper/*.xml
