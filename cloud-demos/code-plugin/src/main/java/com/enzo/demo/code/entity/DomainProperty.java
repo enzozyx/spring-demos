@@ -1,0 +1,104 @@
+package com.enzo.demo.code.entity;/**
+ * Created by LENOVO on 2018/6/12.
+ */
+
+import com.enzo.demo.code.enums.DatabaseTypeEnum;
+import com.enzo.demo.code.utils.JdbcJavaTypeMatcher;
+import com.enzo.demo.code.utils.NameStringUtils;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import java.util.List;
+
+/**
+ * @author zhangyx
+ * @desccription 实体属性描述信息
+ * @date 2018-06-2018/6/12-19:36
+ */
+public class DomainProperty {
+    /**
+     * 属性名
+     */
+    @JsonProperty("name")
+    private String name;
+    /**
+     * 属性关联字段
+     */
+    @JsonProperty("field")
+    private RelationField field;
+    /**
+     * java 数据类型 [java.lang.* ; java.util.* ]
+     */
+    @JsonProperty("type")
+    private String type;
+    /**
+     * 约束信息
+     */
+    @JsonProperty("constains")
+    private List<Constaint> constaints;
+
+    public List<Constaint> getConstaints() {
+        return constaints;
+    }
+
+    public void setConstaints(List<Constaint> constaints) {
+        this.constaints = constaints;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    /**
+    * @author zhangyx
+    * @description 依据关系字段 构造实体属性信息
+    * @date 2018/6/12 20:12
+    * @todo
+    * @param 
+    * @return 
+    * @exception 
+    */
+    public DomainProperty(RelationField field) {
+        setField(field);
+        // TODO: 2018/6/12 依据关系表中字段描述初始化实体属性 
+        initPropery();
+    }
+
+    /**
+    * @author zhangyx
+    * @description 依据关系表中字段描述初始化实体属性
+    * @date 2018/6/12 20:14
+    * @todo
+    * @param 
+    * @return 
+    * @exception 
+    */
+    private void initPropery() {
+        if(field == null) return;
+        // TODO: 2018/6/12 获取属性名:
+        setName(NameStringUtils.getCamelName(field.getName()));
+        // TODO: 2018/6/12 获取属性的Java: 类型
+        setType(JdbcJavaTypeMatcher.matchJavaType(DatabaseTypeEnum.POSTGRESQL, field.getJdbcType()));
+        // TODO: 2018/6/12 处理约束信息: 非空、长度、date的格式化
+        setConstaints(field.getConstaints());
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public RelationField getField() {
+        return field;
+    }
+
+    public void setField(RelationField field) {
+        this.field = field;
+    }
+}

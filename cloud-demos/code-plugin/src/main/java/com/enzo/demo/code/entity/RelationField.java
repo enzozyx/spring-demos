@@ -2,7 +2,11 @@ package com.enzo.demo.code.entity;/**
  * Created by LENOVO on 2018/5/29.
  */
 
+import com.enzo.demo.code.enums.ConstaintEnum;
 import com.fasterxml.jackson.annotation.JsonProperty;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author zhangyx
@@ -93,5 +97,27 @@ public class RelationField {
                 ", notNull=" + notNull +
                 ", comment='" + comment + '\'' +
                 '}';
+    }
+
+    /**
+    * @author zhangyx
+    * @description 通过字段描述 生成约束信息
+    * @date 2018/6/12 20:58
+    * @todo
+    * @param
+    * @return
+    * @exception
+    */
+    public List<Constaint> getConstaints() {
+        List<Constaint> constaints = new ArrayList<Constaint>();
+        // TODO: 2018/6/12 非空约束
+        if(this.notNull) constaints.add(new Constaint(ConstaintEnum.NOT_NULL));
+        // TODO: 2018/6/12 长度约束
+        if(varLength > 0) constaints.add(new Constaint(ConstaintEnum.MAX_LENGTH, varLength));
+        // TODO: 2018/6/12 时间格式约束
+        if(jdbcType.equalsIgnoreCase("timestamp")) constaints.add(new Constaint(ConstaintEnum.DATE_TIME_FORMAT));
+        // TODO: 2018/6/12 日期格式约束
+        if(jdbcType.equalsIgnoreCase("timestamp")) constaints.add(new Constaint(ConstaintEnum.DATE_FORMAT));
+        return constaints;
     }
 }

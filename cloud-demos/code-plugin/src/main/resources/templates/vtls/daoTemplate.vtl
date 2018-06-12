@@ -22,7 +22,18 @@
     </sql>
 
     <select id="findList" parameterType="${packageName}.${domain}" resultMap="${domian}Map">
+        SELECT
+        <trim suffixoverride=",">
+            #foreach($item in $fields)
+                a.$item.alias ,
+            #end
+        </trim>
+        FROM (
+        SELECT ROW_NUMBER() OVER(ORDER BY id) as row, <include refid="${domain}Field"/> FROM t_res
+        ## 分页查询条件遍历
 
+        ) a
+        WHERE a.row <![CDATA[ > ]]> (#{size} * (#{index} - 1))  and a.row <![CDATA[ <= ]]> (#{size} * #{index})
     </select>
 
     <select id="findCount" parameterType="${packageName}.${domain}" resultType="java.lang.Integer">

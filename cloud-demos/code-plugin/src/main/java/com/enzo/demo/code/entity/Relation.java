@@ -28,7 +28,32 @@ public class Relation {
     private String domian;
     @JsonProperty("packageName")
     private String packageName;
+    @JsonProperty("page_clause")
+    private List<RelationField> pageClause;
 
+    public String getDomian() {
+        return domian;
+    }
+
+    public void setDomian(String domian) {
+        this.domian = domian;
+    }
+
+    public String getPackageName() {
+        return packageName;
+    }
+
+    public void setPackageName(String packageName) {
+        this.packageName = packageName;
+    }
+
+    public List<RelationField> getPageClause() {
+        return pageClause;
+    }
+
+    public void setPageClause(List<RelationField> pageClause) {
+        this.pageClause = pageClause;
+    }
 
     public List<RelationField> getFields() {
         return fields;
