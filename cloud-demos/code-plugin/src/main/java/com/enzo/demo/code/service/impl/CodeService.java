@@ -25,6 +25,6 @@ public class CodeService implements ICodeService{
     public DomainDesc queryRelationDefaultDomainDesc(String schema, String relationName) throws SchemaException {
         Relation relation = this.schemaService.queryRelation(schema, relationName);
         DomainDesc domain = new DomainDesc(relation);
-        return null;
+        return domain;
     }
 }

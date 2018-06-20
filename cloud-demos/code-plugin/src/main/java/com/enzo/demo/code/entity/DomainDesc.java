@@ -71,6 +71,7 @@ public class DomainDesc {
             properties = getInitedProperties();
             for(RelationField field: relation.getFields()){
                 DomainProperty property = new DomainProperty(field);
+                properties.add(property);
             }
         }
     }

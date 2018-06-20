@@ -40,12 +40,12 @@ public class NameStringUtils {
         if(origin != null && origin.length() > 0) {
             // TODO: 2018/6/12 如果是下划线，则转驼峰
             while(origin.indexOf("_") > 0){
-                int index = origin.indexOf("_");
+                int index = origin.indexOf("_") + 1;
                 char c = origin.charAt(index);
-                if(c >= 'A' && c <= 'Z'){
-                    c += 32;
+                if(c >= 'a' && c <= 'z'){
+                    c -= 32;
                 }
-                origin = origin.substring(0, index) + c + origin.substring(index + 1);
+                origin = origin.substring(0, index - 1) + c + origin.substring(index + 1);
             }
         }
         return origin;
