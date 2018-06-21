@@ -23,6 +23,15 @@ public class JdbcJavaTypeMatcher {
         put("int4", "Integer");
         put("int2", "Short");
         put("varchar", "String");
+        put("date", "Date");
+    }};
+
+    private static Map<String, String> pgTypeAliasMap = new HashMap<String, String>(){{
+        put("timestamp", "TIMAESTAMP");
+        put("int4", "INTEGER");
+        put("int2", "SMALLINT");
+        put("varchar", "VARCHAR");
+        put("date", "DATE");
     }};
 
     /**
@@ -47,5 +56,19 @@ public class JdbcJavaTypeMatcher {
             log.warn("暂不支持的数据库类型" + dbType);
         }
         return type;
+    }
+
+    public static String matchMybatisJdbcType(DatabaseTypeEnum dbType , String jdbcType){
+        String typeAlias = "VARCHAR";//默认String
+        if(dbType == DatabaseTypeEnum.POSTGRESQL){
+            if(pgTypeAliasMap.containsKey(jdbcType)){
+                typeAlias = pgTypeAliasMap.get(jdbcType);
+            }else{
+                log.warn("无法识别的jdbc 类型: " + jdbcType);
+            }
+        }else {
+            log.warn("暂不支持的数据库类型" + dbType);
+        }
+        return typeAlias;
     }
 }

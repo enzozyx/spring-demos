@@ -31,10 +31,49 @@ public class DomainProperty {
     @JsonProperty("type")
     private String type;
     /**
+     * JDBC 数据类型别名
+     */
+    @JsonProperty("type_alias")
+    private String typeAlias;
+    /**
      * 约束信息
      */
     @JsonProperty("constains")
     private List<Constaint> constaints;
+    /**
+     * getter
+     */
+    @JsonProperty("getter")
+    private String getter;
+    /**
+     * setter
+     */
+    @JsonProperty("setter")
+    private String setter;
+
+    public String getGetter() {
+        return getter;
+    }
+
+    public void setGetter(String getter) {
+        this.getter = getter;
+    }
+
+    public String getSetter() {
+        return setter;
+    }
+
+    public void setSetter(String setter) {
+        this.setter = setter;
+    }
+
+    public String getTypeAlias() {
+        return typeAlias;
+    }
+
+    public void setTypeAlias(String typeAlias) {
+        this.typeAlias = typeAlias;
+    }
 
     public List<Constaint> getConstaints() {
         return constaints;
@@ -80,8 +119,12 @@ public class DomainProperty {
         if(field == null) return;
         // TODO: 2018/6/12 获取属性名:
         setName(NameStringUtils.getCamelName(field.getName()));
+        // TODO: 2018/6/21 配置getter setter
+        setGetter("get"+ NameStringUtils.getNormalName(getName()));
+        setSetter("set"+ NameStringUtils.getNormalName(getName()));
         // TODO: 2018/6/12 获取属性的Java: 类型
         setType(JdbcJavaTypeMatcher.matchJavaType(DatabaseTypeEnum.POSTGRESQL, field.getJdbcType()));
+        setTypeAlias(JdbcJavaTypeMatcher.matchMybatisJdbcType(DatabaseTypeEnum.POSTGRESQL, field.getJdbcType()));
         // TODO: 2018/6/12 处理约束信息: 非空、长度、date的格式化
         setConstaints(field.getConstaints());
     }

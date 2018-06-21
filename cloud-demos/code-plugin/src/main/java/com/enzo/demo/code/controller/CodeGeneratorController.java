@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.io.IOException;
+
 /**
  * @author zhangyx
  * @desccription 代码生成rest服务
@@ -28,8 +30,10 @@ public class CodeGeneratorController {
 
 
     @RequestMapping(value = "/domain/default", method = RequestMethod.GET)
-    public ResponseEntity<DomainDesc> queryDefaultDomainByRelation(@RequestParam String schema, @RequestParam String relation) throws SchemaException {
-        DomainDesc domain = this.codeService.queryRelationDefaultDomainDesc(schema, relation);
+    public ResponseEntity<DomainDesc> queryDefaultDomainByRelation(@RequestParam String schema,
+                                                                   @RequestParam String relation,
+                                                                   @RequestParam String packageName) throws SchemaException, IOException {
+        DomainDesc domain = this.codeService.queryRelationDefaultDomainDesc(schema, relation,packageName);
         return new ResponseEntity<DomainDesc>(CodeAndMessageEnum.SUCCESS, domain);
     }
 }
