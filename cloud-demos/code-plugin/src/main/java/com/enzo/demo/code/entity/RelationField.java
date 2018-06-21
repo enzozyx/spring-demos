@@ -117,7 +117,7 @@ public class RelationField {
         // TODO: 2018/6/12 时间格式约束
         if(jdbcType.equalsIgnoreCase("timestamp")) constaints.add(new Constaint(ConstaintEnum.DATE_TIME_FORMAT));
         // TODO: 2018/6/12 日期格式约束
-        if(jdbcType.equalsIgnoreCase("timestamp")) constaints.add(new Constaint(ConstaintEnum.DATE_FORMAT));
+        if(jdbcType.equalsIgnoreCase("date")) constaints.add(new Constaint(ConstaintEnum.DATE_FORMAT));
         return constaints;
     }
 }

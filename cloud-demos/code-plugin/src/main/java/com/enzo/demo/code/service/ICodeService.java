@@ -5,6 +5,8 @@ package com.enzo.demo.code.service;/**
 import com.enzo.demo.code.entity.DomainDesc;
 import com.enzo.demo.code.exception.SchemaException;
 
+import java.io.IOException;
+
 /**
  * @author zhangyx
  * @desccription 代码服务
@@ -19,8 +21,9 @@ public interface ICodeService {
     * @todo
     * @param schema
     * @param relation
-    * @return
+    * @param packageName
+     * @return
     * @exception
     */
-    public DomainDesc queryRelationDefaultDomainDesc(String schema, String relation) throws SchemaException;
+    public DomainDesc queryRelationDefaultDomainDesc(String schema, String relation, String packageName) throws SchemaException, IOException;
 }

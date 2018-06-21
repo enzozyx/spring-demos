@@ -12,10 +12,10 @@ import com.enzo.demo.code.enums.ConstaintEnum;
 public class Constaint {
 
     private int length;
-    private ConstaintEnum type;
+    private String type;
 
     public Constaint(ConstaintEnum type) {
-        this.type = type;
+        this.type = type.getName();
     }
 
     public Constaint(ConstaintEnum type, int length) {
@@ -32,11 +32,11 @@ public class Constaint {
         this.length = length;
     }
 
-    public ConstaintEnum getType() {
+    public String getType() {
         return type;
     }
 
     public void setType(ConstaintEnum type) {
-        this.type = type;
+        this.type = type.getName();
     }
 }

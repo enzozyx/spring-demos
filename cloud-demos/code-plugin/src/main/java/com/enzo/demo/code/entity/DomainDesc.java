@@ -6,6 +6,7 @@ import com.enzo.demo.code.utils.NameStringUtils;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -34,6 +35,11 @@ public class DomainDesc {
      */
     @JsonProperty("properties")
     private List<DomainProperty> properties;
+    /**
+     * 创建日期
+     */
+    @JsonProperty("date")
+    private Date date;
 
     public DomainDesc(Relation relation) {
         this.relation = relation;
@@ -51,6 +57,10 @@ public class DomainDesc {
     * @exception
     */
     private void initDomain() {
+        // TODO: 2018/6/21 设定日期
+        setDate(new Date());
+        // TODO: 2018/6/21 设置默认包名
+        setPackageName("com.huajie.bim.demo");
         // TODO: 2018/6/12 通过关系名 配置实体名
         setDomainNameFromRelation();
         // TODO: 2018/6/12 依据关系表中的字段信息 配置实体属性
@@ -134,5 +144,13 @@ public class DomainDesc {
 
     public void setProperties(List<DomainProperty> properties) {
         this.properties = properties;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 }

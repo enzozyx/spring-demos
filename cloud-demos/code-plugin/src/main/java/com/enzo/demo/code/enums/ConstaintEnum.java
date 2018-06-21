@@ -9,10 +9,19 @@ package com.enzo.demo.code.enums;/**
  */
 public enum ConstaintEnum {
 
-    NOT_NULL(),
-    MAX_LENGTH(),
-    MIN_LENGTH(),
-    DATE_FORMAT(),
-    DATE_TIME_FORMAT();
+    NOT_NULL("not_null"),
+    MAX_LENGTH("max_length"),
+    MIN_LENGTH("min_length"),
+    DATE_FORMAT("data_format"),
+    DATE_TIME_FORMAT("time_format");
 
+    private String name;
+
+    ConstaintEnum(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
 }

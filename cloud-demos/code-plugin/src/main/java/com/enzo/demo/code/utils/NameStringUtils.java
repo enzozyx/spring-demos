@@ -47,6 +47,8 @@ public class NameStringUtils {
                 }
                 origin = origin.substring(0, index - 1) + c + origin.substring(index + 1);
             }
+            // TODO: 2018/6/21 首字母小写
+            origin = origin.substring(0, 1).toLowerCase() + origin.substring(1);
         }
         return origin;
     }
