@@ -91,16 +91,29 @@
 		</testResources>
 	</build>
 
+	<!--<distributionManagement>-->
+	<!--<repository>-->
+	<!--<id>nexus-releases</id>-->
+	<!--<name>huajie release repository</name>-->
+	<!--<url>http://192.168.1.234:8084/nexus/content/repositories/releases/</url>-->
+	<!--</repository>-->
+	<!--<snapshotRepository>-->
+	<!--<id>nexus-snapshots</id>-->
+	<!--<name>huajie snapshot repository</name>-->
+	<!--<url>http://192.168.1.234:8084/nexus/content/repositories/snapshots/</url>-->
+	<!--</snapshotRepository>-->
+	<!--</distributionManagement>-->
+
 	<distributionManagement>
 		<repository>
 			<id>nexus-releases</id>
 			<name>huajie release repository</name>
-			<url>http://192.168.1.234:8084/nexus/content/repositories/releases/</url>
+			<url>http://120.27.226.246:8081/nexus/content/repositories/releases/</url>
 		</repository>
 		<snapshotRepository>
 			<id>nexus-snapshots</id>
 			<name>huajie snapshot repository</name>
-			<url>http://192.168.1.234:8084/nexus/content/repositories/snapshots/</url>
+			<url>http://120.27.226.246:8081/nexus/content/repositories/snapshots/</url>
 		</snapshotRepository>
 	</distributionManagement>
 
