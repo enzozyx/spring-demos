@@ -5,8 +5,10 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/cloud-demos.iml" filepath="$PROJECT_DIR$/.idea/cloud-demos.iml" />
       <module fileurl="file://$PROJECT_DIR$/code-plugin/code-plugin.iml" filepath="$PROJECT_DIR$/code-plugin/code-plugin.iml" />
       <module fileurl="file://$PROJECT_DIR$/commons/commons.iml" filepath="$PROJECT_DIR$/commons/commons.iml" />
+      <module fileurl="file://$PROJECT_DIR$/feign-interfaces/feign-interfaces.iml" filepath="$PROJECT_DIR$/feign-interfaces/feign-interfaces.iml" />
       <module fileurl="file://$PROJECT_DIR$/register/register.iml" filepath="$PROJECT_DIR$/register/register.iml" />
       <module fileurl="file://$PROJECT_DIR$/server-bpm/server-bpm.iml" filepath="$PROJECT_DIR$/server-bpm/server-bpm.iml" />
+      <module fileurl="file://$PROJECT_DIR$/server-common/server-common.iml" filepath="$PROJECT_DIR$/server-common/server-common.iml" />
       <module fileurl="file://$PROJECT_DIR$/server-gateway/server-gateway.iml" filepath="$PROJECT_DIR$/server-gateway/server-gateway.iml" />
       <module fileurl="file://$PROJECT_DIR$/server-notes/server-notes.iml" filepath="$PROJECT_DIR$/server-notes/server-notes.iml" />
       <module fileurl="file://$PROJECT_DIR$/server-project/server-project.iml" filepath="$PROJECT_DIR$/server-project/server-project.iml" />

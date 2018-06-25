@@ -24,8 +24,10 @@
         <processorPath useClasspath="true" />
         <module name="code-plugin" />
         <module name="commons" />
+        <module name="feign-interfaces" />
         <module name="register" />
         <module name="server-bpm" />
+        <module name="server-common" />
         <module name="server-gateway" />
         <module name="server-notes" />
         <module name="server-project" />
@@ -35,8 +37,10 @@
     <bytecodeTargetLevel>
       <module name="code-plugin" target="1.8" />
       <module name="commons" target="1.8" />
+      <module name="feign-interfaces" target="1.8" />
       <module name="register" target="1.8" />
       <module name="server-bpm" target="1.8" />
+      <module name="server-common" target="1.8" />
       <module name="server-gateway" target="1.8" />
       <module name="server-notes" target="1.8" />
       <module name="server-project" target="1.8" />

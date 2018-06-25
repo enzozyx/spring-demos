@@ -17,6 +17,7 @@ import org.slf4j.LoggerFactory;
  * @desccription ${desc!}
  * @date ${domain.date?string("yyyy-MM-dd HH:mm:ss")}
  */
+@Service
 public class ${domain.name}Service implements I${domain.name}Service{
 
     private static Logger log = LoggerFactory.getLogger(${domain.name}Service.class);

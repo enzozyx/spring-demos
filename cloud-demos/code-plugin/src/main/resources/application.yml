@@ -19,6 +19,6 @@ spring:
       username: postgres
       password: HUAJIEbim@123456
       driver-class-name: org.postgresql.Driver
-      url: jdbc:postgresql://192.168.1.234:5432/bim_inner?useunicode=true&characterencoding=utf-8&zerodatetimebehavior=converttonull
+      url: jdbc:postgresql://192.168.1.234:5432/cloud-demo?useunicode=true&characterencoding=utf-8&zerodatetimebehavior=converttonull
 mybatis:
   mapper-locations: mapper/*.xml

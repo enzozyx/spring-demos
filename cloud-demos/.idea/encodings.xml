@@ -2,8 +2,10 @@
 <project version="4">
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/code-plugin" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/feign-interfaces" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/register" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/server-bpm" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/server-common" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/server-gateway" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/server-notes" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/server-project" charset="UTF-8" />
