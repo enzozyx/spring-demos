@@ -8,13 +8,17 @@ import java.util.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import java.io.Serializable;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 /**
  * @author enzo
  * @desccription
  * @date ${date?string("yyyy-MM-dd HH:mm:ss")}
  */
-public class ${name} {
+public class ${name}  implements Serializable{
+
+    private static final long serialVersionUID = -1L;
 
     private Logger log = LoggerFactory.getLogger(${name}.class);
 
@@ -31,7 +35,8 @@ public class ${name} {
     public void ${p.setter}(${p.type} ${p.name}){
         this.${p.name} = ${p.name};
     }
-
+    <#if p.field.jdbcType =="timestamp">@JsonFormat(locale="zh", timezone="GMT+8", pattern="yyyy-MM-dd HH:mm:ss")</#if>
+    <#if p.field.jdbcType =="date">@JsonFormat(locale="zh", timezone="GMT+8", pattern="yyyy-MM-dd")</#if>
     public ${p.type} ${p.getter}(){
         return this.${p.name};
     }

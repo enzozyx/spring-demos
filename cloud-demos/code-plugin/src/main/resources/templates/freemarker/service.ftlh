@@ -11,6 +11,11 @@ import java.util.*;
 import java.lang.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import com.huajie.bim.common.service.IUIdGenerator;
+import com.huajie.bim.common.config.NoRuleMapCode;
 
 /**
  * @author enzo
@@ -23,6 +28,8 @@ public class ${domain.name}Service implements I${domain.name}Service{
     private static Logger log = LoggerFactory.getLogger(${domain.name}Service.class);
     @Autowired
     private ${domain.name}Dao dao;
+    @Autowired
+    private IUIdGenerator idGenerator;
 
     <#list methods as m>
     /**

@@ -5,9 +5,9 @@
     <resultMap id="${domain.name}Map" type="${domain.packageName}.entity.${domain.name}">
         <#list domain.properties as p>
         <#if p.name=="id">
-        <id column="${p.field.name}" property="${p.name}" jcbdType="${p.typeAlias}"/>
+        <id column="${p.field.name}" property="${p.name}" jdbcType="${p.typeAlias}"/>
         <#else>
-        <result column="${p.field.name}" property="${p.name}" jcbdType="${p.typeAlias}"/>
+        <result column="${p.field.name}" property="${p.name}" jdbcType="${p.typeAlias}"/>
         </#if>
         </#list>
     </resultMap>
