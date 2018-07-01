@@ -84,7 +84,7 @@ public class ServiceConstructor {
         StringBuffer sb = new StringBuffer();
         sb.append(entityName +".setCreateBy(userId);\n");
         sb.append("        " + entityName +".setCreated(new Date());\n");
-        sb.append("        " + entityName +".setId(idGenerator.getNextId(NoRuleMapCode.UNKNOW_ID_SQUECE));\n");
+        sb.append("        " + entityName +".setId(idGenerator.getNextId(\""+ domain.getRelation().getSchema() + "\", NoRuleMapCode.UNKNOW_ID_SQUECE));\n");
         sb.append("        this.dao.insert("+ entityName +")" +  ";\n");
         sb.append("        return this.queryDetail(" + entityName + ".getId());");
         return sb.toString();
@@ -105,7 +105,7 @@ public class ServiceConstructor {
         StringBuffer sb = new StringBuffer();
         sb.append(entityName +".setCreateBy(userId);\n");
         sb.append("        " + entityName +".setCreated(new Date());\n");
-        sb.append("        " + entityName +".setId(idGenerator.getNextId(NoRuleMapCode.UNKNOW_ID_SQUECE));\n");
+        sb.append("        " + entityName +".setId(idGenerator.getNextId(\"" + domain.getRelation().getSchema() + "\", NoRuleMapCode.UNKNOW_ID_SQUECE));\n");
         sb.append("        this.dao.insertSelective("+ entityName +")" +  ";\n");
         sb.append("        return this.queryDetail(" + entityName + ".getId());");
         return sb.toString();

@@ -51,6 +51,17 @@ public class DomainProperty {
     @JsonProperty("setter")
     private String setter;
 
+    /**
+     * 是否指定查询
+     */
+    @JsonProperty("is_query")
+    private Boolean isQuery = false;
+    /**
+     * 是否作为查询限制条件
+     */
+    @JsonProperty("is_clause")
+    private Boolean isClause = false;
+
     public String getGetter() {
         return getter;
     }
@@ -89,6 +100,21 @@ public class DomainProperty {
 
     public void setType(String type) {
         this.type = type;
+    }
+    public Boolean getQuery() {
+        return isQuery;
+    }
+
+    public void setQuery(Boolean query) {
+        isQuery = query;
+    }
+
+    public Boolean getClause() {
+        return isClause;
+    }
+
+    public void setClause(Boolean clause) {
+        isClause = clause;
     }
 
     /**

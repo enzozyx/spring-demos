@@ -63,7 +63,7 @@ public class DaoConstructor {
     private static void buildDeleteParse(MethodDesc method, DomainDesc domain) {
         StringBuffer sb = new StringBuffer();
         sb.append("<delete id=\"" + method.getName() + "\" parameterType=\"java.lang.Integer\"> \n");
-        sb.append("    delete from " + domain.getRelation().getName() + "\n");
+        sb.append("    delete from " + domain.getRelation().getSchema() + "." + domain.getRelation().getName() + "\n");
         sb.append("    where id = #{id} \n");
         sb.append("    </delete>");
         method.setParse(sb.toString());
@@ -80,8 +80,8 @@ public class DaoConstructor {
     */
     private static void buildUpdateParse(MethodDesc method, DomainDesc domain) {
         StringBuffer sb = new StringBuffer();
-        sb.append("<update id=\"" + method.getName() + "\" parameterType=\""+ domain.getPackageName() + "." + domain.getName() +"\"> \n");
-        sb.append("    update " + domain.getRelation().getName());
+        sb.append("<update id=\"" + method.getName() + "\" parameterType=\""+ domain.getPackageName() + ".entity." + domain.getName() +"\"> \n");
+        sb.append("    update " + domain.getRelation().getSchema() + "." + domain.getRelation().getName());
         sb.append(" <include refid=\"UpdateField\"/> \n");
         sb.append("    where id = #{id} \n");
         sb.append("    </update>");
@@ -99,8 +99,8 @@ public class DaoConstructor {
     */
     private static void buildInserParse(MethodDesc method, DomainDesc domain) {
         StringBuffer sb = new StringBuffer();
-        sb.append("<insert id=\"" + method.getName() + "\" parameterType=\""+ domain.getPackageName() + "." + domain.getName() +"\"> \n");
-        sb.append("    insert into " + domain.getRelation().getName() + "(");
+        sb.append("<insert id=\"" + method.getName() + "\" parameterType=\""+ domain.getPackageName() + ".entity." + domain.getName() +"\"> \n");
+        sb.append("    insert into " + domain.getRelation().getSchema() + "." + domain.getRelation().getName() + "(");
         sb.append("<include refid=\"InsertNotNullField\"/> ");
         sb.append(") \n");
         sb.append("    values (");
@@ -120,8 +120,8 @@ public class DaoConstructor {
      */
     private static void buildInserSelectiveParse(MethodDesc method, DomainDesc domain) {
         StringBuffer sb = new StringBuffer();
-        sb.append("<insert id=\"" + method.getName() + "\" parameterType=\""+ domain.getPackageName() + "." + domain.getName() +"\"> \n");
-        sb.append("    insert into " + domain.getRelation().getName() + "(");
+        sb.append("<insert id=\"" + method.getName() + "\" parameterType=\""+ domain.getPackageName() + ".entity." + domain.getName() +"\"> \n");
+        sb.append("    insert into " + domain.getRelation().getSchema() + "." + domain.getRelation().getName() + "(");
         sb.append("<include refid=\"InsertField\"/> ");
         sb.append(") \n");
         sb.append("    values (");
@@ -145,7 +145,7 @@ public class DaoConstructor {
         sb.append("    select ");
         sb.append("<include refid=\""+ domain.getName() + "Field\"/> ");
         sb.append("from ");
-        sb.append(domain.getRelation().getName() + " \n");
+        sb.append(domain.getRelation().getSchema() + "." + domain.getRelation().getName() + " \n");
         sb.append("    where id = #{id} \n");
         sb.append("    </select>");
         method.setParse(sb.toString());

@@ -2,12 +2,11 @@ package com.enzo.demo.code.entity;/**
  * Created by LENOVO on 2018/6/12.
  */
 
+import com.enzo.demo.code.utils.JdbcJavaTypeMatcher;
 import com.enzo.demo.code.utils.NameStringUtils;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author zhangyx
@@ -40,11 +39,29 @@ public class DomainDesc {
      */
     @JsonProperty("date")
     private Date date;
+    /**
+     * 生成代码 字符串数据
+     */
+    @JsonProperty("files")
+    private Map<String, String> files;
+
 
     public DomainDesc(Relation relation) {
         this.relation = relation;
         // TODO: 2018/6/12 配置默认属性
         initDomain();
+    }
+
+    public Map<String, String> getFiles() {
+        if(files == null){
+            files = new HashMap<>();
+        }
+        return files;
+    }
+
+    public void setFiles(Map<String, String> files) {
+        getFiles();
+        this.files = files;
     }
 
     /**
@@ -80,8 +97,10 @@ public class DomainDesc {
         if(relation != null && relation.getFields() != null && relation.getFields().size() > 0){
             properties = getInitedProperties();
             for(RelationField field: relation.getFields()){
-                DomainProperty property = new DomainProperty(field);
-                properties.add(property);
+                if(JdbcJavaTypeMatcher.filterFiled(field)){
+                    DomainProperty property = new DomainProperty(field);
+                    properties.add(property);
+                }
             }
         }
     }
@@ -152,5 +171,9 @@ public class DomainDesc {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    public void addFile(String key, String desc) {
+        getFiles().put(key, desc);
     }
 }

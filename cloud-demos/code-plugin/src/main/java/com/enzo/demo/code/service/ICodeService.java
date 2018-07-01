@@ -2,6 +2,7 @@ package com.enzo.demo.code.service;/**
  * Created by LENOVO on 2018/6/12.
  */
 
+import com.enzo.demo.code.entity.DomainClause;
 import com.enzo.demo.code.entity.DomainDesc;
 import com.enzo.demo.code.exception.SchemaException;
 
@@ -26,4 +27,14 @@ public interface ICodeService {
     * @exception
     */
     public DomainDesc queryRelationDefaultDomainDesc(String schema, String relation, String packageName) throws SchemaException, IOException;
+    /**
+    * @author zhangyx
+    * @description 查询列表代码生成
+    * @date 2018/6/29 17:08
+    * @todo
+    * @param
+    * @return
+    * @exception
+    */
+    DomainDesc queryDomianQueryList(String schema, String relation, DomainClause data) throws SchemaException;
 }

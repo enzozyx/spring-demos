@@ -2,6 +2,7 @@ package com.enzo.demo.code.utils;/**
  * Created by LENOVO on 2018/6/12.
  */
 
+import com.enzo.demo.code.entity.RelationField;
 import com.enzo.demo.code.enums.DatabaseTypeEnum;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,14 +25,18 @@ public class JdbcJavaTypeMatcher {
         put("int2", "Short");
         put("varchar", "String");
         put("date", "Date");
+        put("numeric", "Double");
+        put("float4", "Double");
     }};
 
     private static Map<String, String> pgTypeAliasMap = new HashMap<String, String>(){{
-        put("timestamp", "TIMAESTAMP");
+        put("timestamp", "TIMESTAMP");
         put("int4", "INTEGER");
         put("int2", "SMALLINT");
         put("varchar", "VARCHAR");
         put("date", "DATE");
+        put("numeric", "REAL");
+        put("float4", "REAL");
     }};
 
     /**
@@ -70,5 +75,14 @@ public class JdbcJavaTypeMatcher {
             log.warn("暂不支持的数据库类型" + dbType);
         }
         return typeAlias;
+    }
+
+    public static boolean filterFiled(RelationField field) {
+        if(field != null && pgTypeMap.containsKey(field.getJdbcType())){
+            return true;
+        }else{
+            log.info("不支持的数据类型:" + field.getJdbcType());
+            return false;
+        }
     }
 }

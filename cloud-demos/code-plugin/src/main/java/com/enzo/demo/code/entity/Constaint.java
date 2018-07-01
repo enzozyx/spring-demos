@@ -4,12 +4,14 @@ package com.enzo.demo.code.entity;/**
 
 import com.enzo.demo.code.enums.ConstaintEnum;
 
+import java.io.Serializable;
+
 /**
  * @author zhangyx
  * @desccription 约束枚举
  * @date 2018-06-2018/6/12-20:48
  */
-public class Constaint {
+public class Constaint{
 
     private int length;
     private String type;

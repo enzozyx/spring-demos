@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.enzo.demo.springcloud.server.user.dao.UserAuthorizeDao">
+
+    <resultMap id="UserAuthorizeMap" type="com.enzo.demo.springcloud.server.user.entity.UserAuthorize">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="username" property="username" jdbcType="VARCHAR"/>
+        <result column="password" property="password" jdbcType="VARCHAR"/>
+        <result column="created" property="created" jdbcType="TIMESTAMP"/>
+        <result column="create_by" property="createBy" jdbcType="INTEGER"/>
+        <result column="updated" property="updated" jdbcType="TIMESTAMP"/>
+        <result column="update_by" property="updateBy" jdbcType="INTEGER"/>
+        <result column="state" property="state" jdbcType="SMALLINT"/>
+    </resultMap>
+
+    <sql id="UserAuthorizeField">
+        id,
+        username,
+        password,
+        created,
+        create_by,
+        updated,
+        update_by,
+        state
+    </sql>
+
+    <sql id="InsertNotNullField">
+        id,
+        username,
+        password,
+        created,
+        create_by,
+        updated,
+        state
+    </sql>
+
+    <sql id="InsertNotNullVals">
+        #{id},
+        #{username},
+        #{password},
+        now(),
+        #{createBy},
+        #{updated},
+        #{state}
+    </sql>
+
+    <sql id="InsertField">
+        <trim suffixOverrides=",">
+        <if test="id != null"> id,</if>
+        <if test="username != null"> username,</if>
+        <if test="password != null"> password,</if>
+        created,
+        <if test="createBy != null"> create_by,</if>
+        <if test="updated != null"> updated,</if>
+        <if test="updateBy != null"> update_by,</if>
+        <if test="state != null"> state,</if>
+        </trim>
+    </sql>
+
+    <sql id="InsertVals">
+        <trim suffixOverrides=",">
+        <if test="id != null">#{id},</if>
+        <if test="username != null">#{username},</if>
+        <if test="password != null">#{password},</if>
+        now(),
+        <if test="createBy != null">#{createBy},</if>
+        <if test="updated != null">#{updated},</if>
+        <if test="updateBy != null">#{updateBy},</if>
+        <if test="state != null">#{state},</if>
+        </trim>
+    </sql>
+
+    <sql id="UpdateField">
+        <set>
+            <if test="id != null">id = #{id},</if>
+            <if test="username != null">username = #{username},</if>
+            <if test="password != null">password = #{password},</if>
+            <if test="created != null">created = #{created},</if>
+            <if test="createBy != null">create_by = #{createBy},</if>
+            updated = now(),
+            <if test="updateBy != null">update_by = #{updateBy},</if>
+            <if test="state != null">state = #{state},</if>
+        </set>
+    </sql>
+
+
+    <!-- 依据主键查询详情 -->
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="UserAuthorizeMap"> 
+    select <include refid="UserAuthorizeField"/> from user.t_user_authorize 
+    where id = #{id} 
+    </select>
+
+    <!-- 新增记录(只导入必填字段) -->
+    <insert id="insert" parameterType="com.enzo.demo.springcloud.server.user.entity.UserAuthorize">
+    insert into user.t_user_authorize(<include refid="InsertNotNullField"/> ) 
+    values (<include refid="InsertNotNullVals"/> )
+    </insert>
+
+    <!-- 新增记录(导入填写字段) -->
+    <insert id="insertSelective" parameterType="com.enzo.demo.springcloud.server.user.entity.UserAuthorize">
+    insert into user.t_user_authorize(<include refid="InsertField"/> ) 
+    values (<include refid="InsertVals"/> )
+    </insert>
+
+    <!-- 依据ID更新填写字段 -->
+    <update id="update" parameterType="com.enzo.demo.springcloud.server.user.entity.UserAuthorize">
+    update user.t_user_authorize <include refid="UpdateField"/> 
+    where id = #{id} 
+    </update>
+
+    <!-- 依据ID删除记录 -->
+    <delete id="delete" parameterType="java.lang.Integer"> 
+    delete from user.t_user_authorize
+    where id = #{id} 
+    </delete>
+
+    <select id="selectAuthorizeByUsername" resultType="java.lang.String" resultMap="UserAuthorizeMap">
+        select <include refid="UserAuthorizeField"/> from user.t_user_authorize
+        where username = #{username}
+    </select>
+
+</mapper>
